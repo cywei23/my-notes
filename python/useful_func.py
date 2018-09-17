@@ -31,3 +31,10 @@ def proc_means(df, Class, Val):
     
     print pd.concat([foo, bar], axis = 0)
 
+# Use to read number of rows of the file
+from itertools import (takewhile,repeat)
+
+def rawincount(filename):
+    f = open(filename, 'rb')
+    bufgen = takewhile(lambda x: x, (f.raw.read(1024*1024) for _ in repeat(None)))
+    return sum( buf.count(b'\n') for buf in bufgen )
