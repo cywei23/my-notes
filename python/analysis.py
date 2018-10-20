@@ -16,5 +16,5 @@ df.apply(lambda x: x.max() - x.min())
 df.col.str.lower()
 df.col.str.contains()
 
-# .describe() method for non-numeric columns
-df.describe(include = ['O'])
+df.describe(include = ['O']) # non-numeric columns only
+df.describe(include = 'all') # all columns
