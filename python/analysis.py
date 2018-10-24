@@ -21,6 +21,8 @@ df.col.str.contains()
 df.describe(include = ['O']) # non-numeric columns only
 df.describe(include = 'all') # all columns
 
+df[col].value_counts(dropna=False)
+
 # map method with dictionary to change value
 mapping_dict = {
     'Android': 'Android',
