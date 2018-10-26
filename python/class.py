@@ -34,6 +34,34 @@ class Customer(object):
 jeff = Customer('Jeff Knupp', 1000.0)
 
 
+class Car(object):
+
+    wheels = 4
+
+    def __init__(self, make, model):
+        self.make = make
+        self.model = model
+
+mustang = Car('Ford', 'Mustang')
+print mustang.wheels
+# 4
+print Car.wheels
+# 4
+
+
+class Car(object):
+    ...
+    @staticmethod
+    def make_car_sound():
+        print 'VRooooommmm!'
+
+class Vehicle(object):
+    ...
+    @classmethod
+    def is_motorcycle(cls):
+        return cls.wheels == 2
+
+        
 from abc import ABCMeta, abstractmethod
 
 class Vehicle(object):
