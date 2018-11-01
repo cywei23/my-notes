@@ -10,26 +10,26 @@ def rsquared(x, y):
     slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
     return r_value**2
     
-def proc_freq(df, Class, Val):
+def proc_freq(df, class, val):
     total_count = df.shape[0]
-    count = df.groupby(Class)[Val].count()
-    mix = df.groupby(Class)[Val].count() / df.shape[0]
+    count = df.groupby(class)[val].count()
+    mix = df.groupby(class)[val].count() / df.shape[0]
     foo = pd.concat([count.rename("Count"), mix.rename("Mix")], axis = 1)
     bar = pd.DataFrame([[total_count, 1]], columns = ['Count', 'Mix'], index = ['Total'])
     
-    print pd.concat([foo, bar], axis = 0)
+    print(pd.concat([foo, bar], axis = 0))
     
-def proc_means(df, Class, Val):
+def proc_means(df, class, val):
     total_count = df.shape[0]
-    total_sum = df[Val].sum()
-    total_mean = df[Val].mean()
-    count = df.groupby(Class)[Val].count()
-    Sum = df.groupby(Class)[Val].sum()
-    Mean = df.groupby(Class)[Val].mean()
+    total_sum = df[val].sum()
+    total_mean = df[val].mean()
+    count = df.groupby(class)[val].count()
+    Sum = df.groupby(class)[val].sum()
+    Mean = df.groupby(class)[val].mean()
     foo = pd.concat([count.rename("Count"), Sum.rename("Sum"), Mean.rename("Mean")], axis = 1)
     bar = pd.DataFrame([[total_count, total_sum, total_mean]], columns = ['Count', 'Sum', 'Mean'], index = ['Total'])
     
-    print pd.concat([foo, bar], axis = 0)
+    print(pd.concat([foo, bar], axis = 0))
 
 # Use to read number of rows of the file
 from itertools import (takewhile,repeat)
