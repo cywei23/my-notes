@@ -57,3 +57,14 @@ def clean_col(s):
     s = s.lower()
     return s    
 laptops.columns = [clean_col(i) for i in laptops.columns]
+
+# this is the way to put Series into Dictionary
+dtypes = optimized_gl.drop('date',axis=1).dtypes
+dtypes_col = dtypes.index
+dtypes_type = [i.name for i in dtypes.values]
+column_types = dict(zip(dtypes_col, dtypes_type))
+
+# prettyprinter for dictionary
+import pprint
+pp = pprint.PrettyPrinter()
+pp.pprint(column_types)
