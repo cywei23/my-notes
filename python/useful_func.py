@@ -56,3 +56,10 @@ def compare_two_dfs(input_df_1, input_df_2):
 
     df = pd.DataFrame({'from': changed_from, 'to': changed_to}, index=changed.index)
     return df
+
+# date column transformation
+def date_format(self, df):
+    col = df.filter(regex='date').columns
+    for i in col:
+        df[i] = pd.to_datetime(df[i], dayfirst=True, format='%Y%m%d')
+    return df
