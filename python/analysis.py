@@ -68,3 +68,7 @@ column_types = dict(zip(dtypes_col, dtypes_type))
 import pprint
 pp = pprint.PrettyPrinter()
 pp.pprint(column_types)
+
+# list permutation
+import itertools
+perm = list(itertools.permutations(hundreds_col, 2))
