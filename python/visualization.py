@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
+%matplotlib inline
 
 # Compare distribution between groups
 cols = ['highcredit','balance','creditlimit']
@@ -12,9 +13,9 @@ for i in cols:
     plt.show()
 
 # Heatmap for comparing model decile distribution
-## create list permutation first
+## create list combination first
 import itertools
-perm = list(itertools.permutations(hundreds_col, 2))
+perm = list(itertools.combinations(hundreds_col, 2))
 
 ## create heatmap
 for i in perm:
@@ -25,3 +26,7 @@ for i in perm:
     ax.invert_yaxis()
     plt.show()
 
+## quickly create histogram
+fig = plt.figure(figsize=(10, 10))
+ax = fig.add_subplot(111)
+pd.read_sql_query(q4, conn).hist(ax=ax)
