@@ -21,7 +21,17 @@ df.col.str.contains()
 df.describe(include = ['O']) # non-numeric columns only
 df.describe(include = 'all') # all columns
 
-df[col].value_counts(normalize=True, dropna=False)
+# Frequency Analysis
+df.col.value_counts(normalize=True, dropna=False)
+df.col.value_counts(bins=10).sort_index(ascending=False)
+
+# Define my own range - interval_range
+intervals = pd.interval_range(start=0, end=600, freq=60)
+gr_freq_table_10 = pd.Series([0 for x in range(10)], index=intervals)
+for i in wnba['PTS']:
+    for j in intervals:
+        if i in j:
+            gr_freq_table_10.loc[j] += 1
 
 # map method with dictionary to change value
 mapping_dict = {
