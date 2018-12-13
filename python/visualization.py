@@ -30,3 +30,8 @@ for i in perm:
 fig = plt.figure(figsize=(10, 10))
 ax = fig.add_subplot(111)
 pd.read_sql_query(q4, conn).hist(ax=ax)
+
+## pie chart
+wnba['Exp_ordinal'].value_counts().plot.pie(figsize = (6,6), autopct = '%.2f%%',
+                                    title = 'Percentage of players in WNBA by level of experience')
+plt.ylabel('')
