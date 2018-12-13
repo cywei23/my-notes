@@ -35,3 +35,18 @@ pd.read_sql_query(q4, conn).hist(ax=ax)
 wnba['Exp_ordinal'].value_counts().plot.pie(figsize = (6,6), autopct = '%.2f%%',
                                     title = 'Percentage of players in WNBA by level of experience')
 plt.ylabel('')
+
+## Data prep for Violin Chart, using set_index and stack data
+# keep the column we need, index1 = ownership, index2 = co_focus_flg, socres = value columns
+df4 = df[['ownership', 'co_focus_flg'] + scores].copy()
+# transform column to be readable for charting
+df4['co_focus_flg'] = np.where(df4['co_focus_flg']==1, 'Focus Owner', 'Non Focus Owner')
+# set_index for stacking the data
+df4.set_index(['ownership', 'co_focus_flg'], inplace=True)
+print(df4.head())
+# stacking data
+stacked = df4.stack().reset_index()
+print(stacked.shape)
+# rename columns for charting
+stacked = stacked.rename({'level_2':'Propensity Model', 0: 'Rank'}, axis=1)
+print(stacked.head())
