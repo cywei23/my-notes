@@ -1,5 +1,5 @@
 ### Change Jupyter Notebook Starting Directory
-https://stackoverflow.com/questions/35254852/how-to-change-the-jupyter-start-up-folder
+`jupyter notebook --notebook-dir=//detasprod01/as/ford/cwei/`
 
 ### Jupyter Notebook Extension
 https://towardsdatascience.com/jupyter-notebook-extensions-517fa69d2231
