@@ -22,6 +22,7 @@ https://towardsdatascience.com/set-your-jupyter-notebook-up-right-with-this-exte
 - Open Windows Powershell as administrator and type in `Set-ExecutionPolicy Unrestricted`
 - `pip install pypiwin32`
 - Use python: select interpreter and use the python.exe correct path one
+- Run spider: `scrapy crawl goodreads -o ouputdata.json`
 
 ### Set up scrapy-splash
 
