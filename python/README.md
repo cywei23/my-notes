@@ -24,8 +24,17 @@ https://towardsdatascience.com/set-your-jupyter-notebook-up-right-with-this-exte
 - Use python: select interpreter and use the python.exe correct path one
 - Run spider: `scrapy crawl goodreads -o ouputdata.json`
 
-### Set up scrapy-splash
+### Set up MongoDB
+- Download community server edition from MongoDB.com
+- Environment variables - system variables - path - new "C:\Program Files\MongoDb\Server\4.0\bin"
+- Install Azure Cosmo DB extension to VS code
+- `md "\data\db" "\data\log"`
+- `mongod --dbpath="C:\data\db"`
 
+### Set up scrapy-splash
+- Download docker windows destop
+- Go to the virtual workspace and `pip install scrapy-splash`
+- Go to the new project's settings.py and add `SPLAH_URL = 'http://localhost:8050'`, DOWNLOAD_MIDDLEWARES, SPIDER_MIDDLEWARES to the file
 
 ### Set up for Azure ML
 - [Quickstart: Use the Python SDK to get started with Azure Machine Learning](https://docs.microsoft.com/en-us/azure/machine-learning/service/quickstart-create-workspace-with-python?toc=%2Fen-us%2Fpython%2Fapi%2Foverview%2Fazure%2Fml%2Ftoc.json%3Fview%3Dazure-ml-py&bc=%2Fen-us%2Fpython%2Fazureml_py_breadcrumb%2Ftoc.json%3Fview%3Dazure-ml-py&view=azure-ml-py)
