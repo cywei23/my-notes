@@ -1,11 +1,12 @@
 # Environment Setup / Frequently Used Commands
 
-### Change Jupyter Notebook Starting Directory
-`jupyter notebook --notebook-dir=//detasprod01/as/ford/cwei/`
+### Start Up Commands
+- `activate myenv`
+- `jupyter notebook --notebook-dir=//detasprod01/as/ford/cwei/`
 
 ### Jupyter Notebook Extension
 - `conda install -c conda-forge jupyter_contrib_nbextensions`
-- Put the setup folder in the path: C:\Users\cwei\AppData\Local\Continuum\anaconda3\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions
+- Put the setup folder in the path: C:\Users\cwei\AppData\Local\Continuum\anaconda3\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions, or C:\Users\cwei\AppData\Local\Continuum\anaconda3\envs\myenv\share\jupyter\nbextensions
 - `jupyter contrib nbextensions install`
 
 #### Useful Extensions
