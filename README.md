@@ -6,6 +6,10 @@
 ### Jupyter Notebook Extension
 - [This article](https://towardsdatascience.com/jupyter-notebook-extensions-517fa69d2231)
 - [This aritcle](https://towardsdatascience.com/set-your-jupyter-notebook-up-right-with-this-extension-24921838a332)
+- `conda install -c conda-forge jupyter_contrib_nbextensions`
+- Put the setup folder in the path: C:\Users\cwei\AppData\Local\Continuum\anaconda3\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions
+- `jupyter contrib nbextensions install`
+
 #### Useful Extensions
 - Collapsible Headings
 - ExecuteTime
