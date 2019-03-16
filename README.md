@@ -56,6 +56,6 @@
 - `conda activate myenv`
 - `conda install notebook ipykernel`
 - `ipython kernel install --user`
-- `pip install azureml-sdk[notebooks,automl,explain]`
-- `pip install azureml-dataprep`
+- `pip install azureml-sdk[notebooks]`
 - `conda install -y cython matplotlib pandas tqdm`
+- `pip install azureml-dataprep`
