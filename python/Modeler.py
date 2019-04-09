@@ -1,12 +1,7 @@
-from __future__ import division
-from sklearn import metrics
-from scipy import stats
-
 import pandas as pd
 import numpy as np
 import csv
 import re
-import cPickle
 import decimal
 import math
 import os
@@ -16,6 +11,9 @@ import time
 import json
 
 import matplotlib.pyplot as plt
+
+from sklearn import metrics
+from scipy import stats
 
 def identifier(df, manual_drop_string, sample_size = 10000, max_level_to_OHE = 8, max_to_na_median = 0.75):
     # df: dataframe for identifying column transfomration groups
@@ -152,7 +150,7 @@ def identifier(df, manual_drop_string, sample_size = 10000, max_level_to_OHE = 8
     data_type_dictionary = dict(zip(list_names, column_lists))    
     data_type_count_dictionary = dict(zip(list_names, column_count))
     
-    print data_type_count_dictionary
+    print(data_type_count_dictionary)
     
     return data_type_dictionary
 
@@ -358,8 +356,8 @@ class Transformer(object):
                     # df.at[df[col].astype(str).values==val, col+'_mean'] = self._count_average_dictionary[col]['mean'][val]
 
             except Exception as e:
-                print 'col: ', col
-                print self.d['colulmn_list_count_average']
+                print('col: ', col)
+                print(self.d['colulmn_list_count_average'])
                 raise e
 
             
@@ -444,8 +442,8 @@ def roc_lift(fit, x_test, y_test, rank_count=10):
     fpr, tpr, thresholds = metrics.roc_curve(y_test, scores)
     
     #plotting roc
-    print "(blue) ", fit, " roc:", metrics.auc(fpr,tpr)
-    print "(red) random roc: 0.5"
+    print("(blue) ", fit, " roc:", metrics.auc(fpr,tpr))
+    print("(red) random roc: 0.5")
     plt.plot(fpr,tpr,
              [0,1],[0,1])
     
@@ -476,7 +474,7 @@ def roc_lift(fit, x_test, y_test, rank_count=10):
 
         decile_count_cum += decile_count
 
-        print decile_n + 1, decile_event_cum / decile_count_cum / overall_rate
+        print(decile_n + 1, decile_event_cum / decile_count_cum / overall_rate)
         
 def profile(fit, x_test, rank_count = 10):
     # Decile profile for overall
@@ -488,3 +486,30 @@ def profile(fit, x_test, rank_count = 10):
     decile_profile = scored.groupby('rank').mean()
     
     return decile_profile
+
+################## OTHER MISCELLANEOUS FUNCTIONS#############################
+def rsquared(x, y):
+    # Return R^2 where x and y are array-like
+    slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
+    return r_value**2
+    
+def proc_freq(df, Class, Val):
+    total_count = df.shape[0]
+    count = df.groupby(Class)[Val].count()
+    mix = df.groupby(Class)[Val].count() / df.shape[0]
+    foo = pd.concat([count.rename("Count"), mix.rename("Mix")], axis = 1)
+    bar = pd.DataFrame([[total_count, 1]], columns = ['Count', 'Mix'], index = ['Total'])
+    
+    print(pd.concat([foo, bar], axis = 0))
+    
+def proc_means(df, Class, Val):
+    total_count = df.shape[0]
+    total_sum = df[Val].sum()
+    total_mean = df[Val].mean()
+    count = df.groupby(Class)[Val].count()
+    Sum = df.groupby(Class)[Val].sum()
+    Mean = df.groupby(Class)[Val].mean()
+    foo = pd.concat([count.rename("Count"), Sum.rename("Sum"), Mean.rename("Mean")], axis = 1)
+    bar = pd.DataFrame([[total_count, total_sum, total_mean]], columns = ['Count', 'Sum', 'Mean'], index = ['Total'])
+    
+    print(pd.concat([foo, bar], axis = 0))
