@@ -49,3 +49,10 @@
 - Go to browser and typ localhost:8050 and go the site want to do Lau script and render
 - Go to the new project's settings.py and add `SPLAH_URL = 'http://localhost:8050'`, DOWNLOAD_MIDDLEWARES, SPIDER_MIDDLEWARES to the file
 - `scrapy genspider -t basic usproxy us-proxy.org`
+
+### Start up scarpy crawler
+- `cd virtual_workspace`
+- `Scrpits\activate`
+- `scrapy startproject demo_crawl`
+- `cd demo_crawl`
+- `scrapy genspider -t crawl tutsplus code.tutsplus.com/categories`
