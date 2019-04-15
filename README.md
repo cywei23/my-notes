@@ -56,3 +56,5 @@
 - `scrapy startproject demo_crawl`
 - `cd demo_crawl`
 - `scrapy genspider -t crawl tutsplus code.tutsplus.com/categories`
+- `scrapy crawl tutsplus -o tutorials.json`
+
