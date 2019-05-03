@@ -18,17 +18,39 @@
 - spellchecker
 - Variable inspecor
 
-### pip for local conda environment
+### Pip for local conda environment
 If you create a conda environment, activate the environment, and then pip install the distributions package, you'll find that the system installs your package globally rather than in your local conda environment. However, if you create the conda environment and install pip simultaneously, you'll find that pip behaves as expected installing packages into your local environment:
 - `conda create --name environmentname pip`
 
-### venv & pip install a local package
+### Venv & pip install a local package
 - `conda update python`
 - `python -m venv venv_name`
 - `source venv venv_name/bin/activate`
 - `cd python_package_example`
 - `pip install .`
 
+### Local Package
+- `cd package_folder`
+- `pip install .`
+- `pip install --upgrade .`
+
+### Put Code on PyPi
+```
+cd gb_distributions
+python setup.py sdist
+pip install twine
+
+# commands to upload to the pypi test repository
+twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+pip install --index-url https://test.pypi.org/simple/ gb-distributions
+
+# command to upload to the pypi repository
+twine upload dist/*
+pip install gb-distributions
+```
+
+
+## Scrapy & Splash
 ### Set up virtual environment & scrapy
 - `python -V` use python 3.6.5
 - `pip install virtualenv`
