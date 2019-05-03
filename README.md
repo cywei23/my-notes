@@ -1,7 +1,7 @@
 # Environment Setup / Frequently Used Commands
 
 ### Start Up Commands
-- `activate myenv`
+- `activate myenv` for Azure API
 - `jupyter notebook --notebook-dir=//detasprod01/as/ford/cwei/`
 
 ### Jupyter Notebook Extension
@@ -17,6 +17,17 @@
 - Snippets
 - spellchecker
 - Variable inspecor
+
+### pip for local conda environment
+If you create a conda environment, activate the environment, and then pip install the distributions package, you'll find that the system installs your package globally rather than in your local conda environment. However, if you create the conda environment and install pip simultaneously, you'll find that pip behaves as expected installing packages into your local environment:
+- `conda create --name environmentname pip`
+
+### venv & pip install a local package
+- `conda update python`
+- `python -m venv venv_name`
+- `source venv venv_name/bin/activate`
+- `cd python_package_example`
+- `pip install .`
 
 ### Set up virtual environment & scrapy
 - `python -V` use python 3.6.5
