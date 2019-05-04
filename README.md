@@ -29,26 +29,6 @@ If you create a conda environment, activate the environment, and then pip instal
 - `cd python_package_example`
 - `pip install .`
 
-### Local Package
-- `cd package_folder`
-- `pip install .`
-- `pip install --upgrade .`
-
-### Put Code on PyPi
-```
-cd gb_distributions
-python setup.py sdist
-pip install twine
-
-# commands to upload to the pypi test repository
-twine upload --repository-url https://test.pypi.org/legacy/ dist/*
-pip install --index-url https://test.pypi.org/simple/ gb-distributions
-
-# command to upload to the pypi repository
-twine upload dist/*
-pip install gb-distributions
-```
-
 
 ## Scrapy & Splash
 ### Set up virtual environment & scrapy
