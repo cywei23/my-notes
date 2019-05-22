@@ -2,6 +2,9 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 %matplotlib inline
 
+# adjust matplotlib default figure size
+plt.rcParams['figure.figsize'] = [14, 4]
+
 # Compare distribution between groups
 cols = ['highcredit','balance','creditlimit']
 for i in cols:
