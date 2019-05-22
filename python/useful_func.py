@@ -63,3 +63,18 @@ def date_format(df):
     for i in col:
         df[i] = pd.to_datetime(df[i], dayfirst=True, format='%Y%m%d')
     return df
+
+# cut first x rows from a huge file
+def chop_small_file(infile, outfile, num_records):
+    '''
+    infile: input file path name
+    outfile: output file path name
+    num_records: # want to keep
+    '''
+    with open(outfile, 'w') as f2:
+        with open(infile) as f1:
+            for i, line in enumerate(f1):
+                if i < num_records:
+                    f2.write(line)
+                else:
+                    break
