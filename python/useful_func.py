@@ -1,16 +1,38 @@
 
 def colName_replace(df, old, new):
     # Replace column name across with certain element
+    '''
+    Param:
+        old: string, old part of the column name want to be replaced
+        new: string
+    Return:
+        dataframe
+    '''
     for i in range(0, len(df.columns)):
         df = df.rename(columns = {df.columns[i]:df.columns[i].replace(old,new)})
     return df
 
 def rsquared(x, y):
     # Return R^2 where x and y are array-like
+    '''
+    Param:
+        x: array
+        y: array
+    Return:
+        R-square value
+    '''
     slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
     return r_value**2
     
 def proc_freq(df, class, val):
+    '''
+    Param:
+        df: dataframe
+        class: string of the column name to be table variable (SAS syntax)
+        val: string of the column name to be var
+    Return:
+        print of the result table
+    '''
     total_count = df.shape[0]
     count = df.groupby(class)[val].count()
     mix = df.groupby(class)[val].count() / df.shape[0]
@@ -20,6 +42,14 @@ def proc_freq(df, class, val):
     print(pd.concat([foo, bar], axis = 0))
     
 def proc_means(df, class, val):
+    '''
+    Param:
+        df: dataframe
+        class: string of the column name to be class variable (SAS syntax)
+        val: string of the column name to be var (SAS syntax)
+    Return:
+        print of the result table
+    '''
     total_count = df.shape[0]
     total_sum = df[val].sum()
     total_mean = df[val].mean()
@@ -78,3 +108,21 @@ def chop_small_file(infile, outfile, num_records):
                     f2.write(line)
                 else:
                     break
+# save a dict with pandas dataframe in it
+def saver(dictex):
+    for key, val in dictex.items():
+        val.to_csv("data/data_{}.csv".format(str(key)))
+
+    with open("data/keys.txt", "w") as f: #saving keys to file
+        f.write(str(list(dictex.keys())))
+
+def loader():
+    """Reading data from keys"""
+    with open("data/keys.txt", "r") as f:
+        keys = eval(f.read())
+
+    dictex = {}    
+    for key in keys:
+        dictex[key] = pd.read_csv("data/data_{}.csv".format(str(key)))
+
+    return dictex
