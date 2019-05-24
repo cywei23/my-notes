@@ -5,6 +5,10 @@ import seaborn as sns
 # adjust matplotlib default figure size
 plt.rcParams['figure.figsize'] = [14, 4]
 
+# Pretty print your dataframe and can be pasted into excel
+from IPython.display import display, HTML
+display(HTML(df.to_html()))
+
 # Compare distribution between groups
 cols = ['highcredit','balance','creditlimit']
 for i in cols:
