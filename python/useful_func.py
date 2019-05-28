@@ -1,3 +1,7 @@
+import pandas as pd
+import numpy as np
+from scipy import stats
+from itertools import (takewhile,repeat)
 
 def colName_replace(df, old, new):
     # Replace column name across with certain element
@@ -24,28 +28,28 @@ def rsquared(x, y):
     slope, intercept, r_value, p_value, std_err = stats.linregress(x, y)
     return r_value**2
     
-def proc_freq(df, class, val):
+def proc_freq(df, group, val):
     '''
     Param:
         df: dataframe
-        class: string of the column name to be table variable (SAS syntax)
+        group: string of the column name to be table variable (SAS syntax)
         val: string of the column name to be var
     Return:
         print of the result table
     '''
     total_count = df.shape[0]
-    count = df.groupby(class)[val].count()
-    mix = df.groupby(class)[val].count() / df.shape[0]
+    count = df.groupby(group)[val].count()
+    mix = df.groupby(group)[val].count() / df.shape[0]
     foo = pd.concat([count.rename("Count"), mix.rename("Mix")], axis = 1)
     bar = pd.DataFrame([[total_count, 1]], columns = ['Count', 'Mix'], index = ['Total'])
     
     print(pd.concat([foo, bar], axis = 0))
     
-def proc_means(df, class, val):
+def proc_means(df, group, val):
     '''
     Param:
         df: dataframe
-        class: string of the column name to be class variable (SAS syntax)
+        group: string of the column name to be group variable (SAS syntax)
         val: string of the column name to be var (SAS syntax)
     Return:
         print of the result table
@@ -53,17 +57,15 @@ def proc_means(df, class, val):
     total_count = df.shape[0]
     total_sum = df[val].sum()
     total_mean = df[val].mean()
-    count = df.groupby(class)[val].count()
-    Sum = df.groupby(class)[val].sum()
-    Mean = df.groupby(class)[val].mean()
+    count = df.groupby(group)[val].count()
+    Sum = df.groupby(group)[val].sum()
+    Mean = df.groupby(group)[val].mean()
     foo = pd.concat([count.rename("Count"), Sum.rename("Sum"), Mean.rename("Mean")], axis = 1)
     bar = pd.DataFrame([[total_count, total_sum, total_mean]], columns = ['Count', 'Sum', 'Mean'], index = ['Total'])
     
     print(pd.concat([foo, bar], axis = 0))
 
 # Use to read number of rows of the file
-from itertools import (takewhile,repeat)
-
 def rawincount(filename):
     f = open(filename, 'rb')
     bufgen = takewhile(lambda x: x, (f.raw.read(1024*1024) for _ in repeat(None)))
@@ -125,4 +127,3 @@ def loader():
     for key in keys:
         dictex[key] = pd.read_csv("data/data_{}.csv".format(str(key)))
 
-    return dictex
