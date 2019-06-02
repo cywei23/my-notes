@@ -24,6 +24,10 @@ df.describe(include = 'all') # all columns
 # Frequency Analysis
 df.col.value_counts(normalize=True, dropna=False)
 df.col.value_counts(bins=10).sort_index(ascending=False)
+# custom range
+df = pd.DataFrame({"a": np.random.random_integers(0, high=100, size=100)})
+ranges = [0,10,20,30,40,50,60,70,80,90,100]
+df.groupby(pd.cut(df.a, ranges)).count()
 
 # Define my own range - interval_range
 intervals = pd.interval_range(start=0, end=600, freq=60)
