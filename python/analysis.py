@@ -1,5 +1,11 @@
 #### THIS IS JUST PSEUDO CODE!!! ####
 
+# pandas display options
+pd.set_option('display.max_rows', 500)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
+pd.set_option('display.max_colwidth', 1000)
+
 # Find out cardinality on all columns and then one-hot encoding
 cardinality = [[col, len(df[col].unique())] for col in df.columns]
 cardinality = pd.DataFrame(cardinality)
