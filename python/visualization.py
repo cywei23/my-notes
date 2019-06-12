@@ -1,9 +1,14 @@
+### THIS IS JUST PSEUDO CODES ###
+
 import matplotlib.pyplot as plt
 import seaborn as sns
 %matplotlib inline
 
 # adjust matplotlib default figure size
 plt.rcParams['figure.figsize'] = [14, 4]
+# adjust seaborn figure size
+ax = sns.regplot(x="trip_distance", y="fare_amount", fit_reg=False, ci=None, truncate=True, data=trips)
+ax.figure.set_size_inches(10, 8)
 
 # Pretty print your dataframe and can be pasted into excel
 from IPython.display import display, HTML
