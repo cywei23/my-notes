@@ -1,3 +1,8 @@
+### Make a path
+import os
+if not os.path.exists("images"):
+    os.mkdir("images")
+
 #### Organize folders
 - keep code in scripts and data in data folder under the main folder like work/program, work/data
 ```python
