@@ -1,8 +1,11 @@
 # Environment Setup / Frequently Used Commands
 
 ### Start Up Commands
-- `activate myenv` for Azure API
+- `activate myenv`
 - `jupyter notebook --notebook-dir=//detasprod01/as/ford/cwei/`
+
+### Save Jupyter Notebook to HTML without codes
+- `jupyter nbconvert --to html --no-input <input notebook>
 
 ### Jupyter Notebook Extension
 - `conda install -c conda-forge jupyter_contrib_nbextensions`
