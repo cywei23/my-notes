@@ -16,10 +16,10 @@
 - Collapsible Headings
 - ExecuteTime
 - Scratchpad
-- Setup
 - Snippets
 - spellchecker
 - Variable inspecor
+- Hide input all
 
 ### Pip for local conda environment
 If you create a conda environment, activate the environment, and then pip install the distributions package, you'll find that the system installs your package globally rather than in your local conda environment. However, if you create the conda environment and install pip simultaneously, you'll find that pip behaves as expected installing packages into your local environment:
