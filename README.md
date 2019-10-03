@@ -32,19 +32,6 @@ If you create a conda environment, activate the environment, and then pip instal
 - `cd python_package_example`
 - `pip install .`
 
-## GCP Compute Engine
-### Set up Anaconda
-- `wget https://repo.anaconda.com/archive/Anaconda3-2019.07-Linux-x86_64.sh`
-- `mkdir tmp`
-- `cd tmp`
-- `bash Anaconda3-2019.07-Linux-x86_64.sh`
-- `cd ~`
-- `source .bashrc`
-- `conda create -n myenv python=3.6.5`
-- `source activate myenv`
-### Chrome Remote Desktop
-https://cloud.google.com/solutions/chrome-desktop-remote-on-compute-engine
-
 ## Scrapy & Splash
 ### Set up virtual environment & scrapy
 - `python -V` use python 3.6.5
