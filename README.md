@@ -8,6 +8,7 @@
 ### Remote Connect
 - `jupyter notebook --no-browser --port=8889`
 - `ssh -N -f -L localhost:8888:localhost:8889 username@your_remote_host_name`
+- `localhost:8888`
 
 ### Save Jupyter Notebook to HTML without codes
 - `jupyter nbconvert --to html --no-input <input notebook>`
