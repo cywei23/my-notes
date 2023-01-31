@@ -13,6 +13,9 @@
 ### Save Jupyter Notebook to HTML without codes
 - `jupyter nbconvert --to html --no-input <input notebook>`
 
+### Install packages (mac)
+- `conda install jupyter numpy pandas boto3 matplotlib seaborn psycopg2 scipy scikit-learn xgboost`
+
 ### Jupyter Notebook Extension
 - `conda install -c conda-forge jupyter_contrib_nbextensions`
 - Put the setup folder in the path: C:\Users\cwei\AppData\Local\Continuum\anaconda3\Lib\site-packages\jupyter_contrib_nbextensions\nbextensions, or C:\Users\cwei\AppData\Local\Continuum\anaconda3\envs\myenv\share\jupyter\nbextensions
